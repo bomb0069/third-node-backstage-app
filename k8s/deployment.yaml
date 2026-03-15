@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: third-node-gitops
-          image: ghcr.io/bomb0069/third-node-backstage-app:latest
+          image: ghcr.io/bomb0069/third-node-backstage-app:a0bec14d8563a8e5be28d18674b6dde655b8ec31
           ports:
             - containerPort: 3000
           env:
