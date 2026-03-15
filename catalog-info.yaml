@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: third-node-gitops
+  description: second test nodejs application with gitops
+  annotations:
+    github.com/project-slug: bomb0069/third-node-backstage-app
+    backstage.io/kubernetes-id: third-node-gitops
+spec:
+  type: service
+  owner: user:guest
+  lifecycle: experimental

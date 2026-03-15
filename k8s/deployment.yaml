@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: third-node-gitops
+  namespace: third-node-gitops
+  labels:
+    app: third-node-gitops
+    backstage.io/kubernetes-id: third-node-gitops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: third-node-gitops
+  template:
+    metadata:
+      labels:
+        app: third-node-gitops
+        backstage.io/kubernetes-id: third-node-gitops
+    spec:
+      containers:
+        - name: third-node-gitops
+          image: ghcr.io/bomb0069/third-node-backstage-app:latest
+          ports:
+            - containerPort: 3000
+          env:
+            - name: PORT
+              value: '3000'
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 3000
+            initialDelaySeconds: 10
+            periodSeconds: 30
